@@ -47,6 +47,9 @@ flash and never writes to the flash.
 
 ## Buttons
 
+All the buttons on one printable page: [`docs/buttons.html`](docs/buttons.html)
+([view it rendered](https://htmlpreview.github.io/?https://github.com/zeromem0/dst210-tester232u/blob/main/docs/buttons.html)).
+
 | Button | Press | What it does |
 |---|---|---|
 | RUN + POWER | at power-on | Starts the tester. POWER alone starts the FNIRSI firmware. |

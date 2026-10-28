@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DST-210 Tester232u: buttons</title>
+<link rel="alternate" hreflang="ro" href="butoane.html">
+<style>
+  :root { --ink: #1b1d22; --band: #33363d; --line: #33363d; --soft: #f1f2f4; --mute: #5d626c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px 40px; background: #fff; color: var(--ink);
+         font: 14px/1.4 "Segoe UI", system-ui, -apple-system, Arial, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: #fff; margin: 0 0 14px;
+       background: var(--band); display: inline-block; padding: 7px 34px 7px 14px;
+       clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%); }
+  h1 small { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .8; margin-left: 8px; }
+  .frame { border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  th, td { border: 1px solid var(--line); padding: 7px 10px; text-align: center; vertical-align: middle; }
+  tr:first-child th { border-top: 0; } tr:last-child td { border-bottom: 0; }
+  th:first-child, td:first-child { border-left: 0; } th:last-child, td:last-child { border-right: 0; }
+  th { font-weight: 700; background: var(--soft); }
+  td.b { font-weight: 700; font-size: 16px; white-space: nowrap; width: 96px; }
+  td.op { color: var(--mute); width: 92px; }
+  td.w { background: var(--soft); }
+  code { font: 600 12.5px Consolas, "Cascadia Mono", monospace; background: var(--soft);
+         border: 1px solid #cfd2d8; border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+  th code { background: #fff; }
+  p.note { color: var(--mute); margin: -10px 2px 22px; font-size: 13px; }
+  @media print { body { padding: 0; font-size: 12px; } .frame { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Power <small>DST-210, Tester232u v0.33, next to the FNIRSI firmware</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Buttons</th><th>Press</th><th>What it does</th></tr>
+  <tr><td class="b">RUN + POWER</td><td class="op">at power-on</td><td>Starts the tester. POWER alone starts the FNIRSI firmware, as before.</td></tr>
+  <tr><td class="b">MODE + POWER</td><td class="op">at power-on</td><td>FNIRSI firmware update: USB drive, folder “Upgrade file”</td></tr>
+  <tr><td class="b">POWER</td><td class="op">held 2 s</td><td>Off, from anywhere in the tester. <b>Auto off</b> (Settings) switches off by itself after 10 min without a button or a byte received.</td></tr>
+</table>
+</div></div>
+
+<h1>Start menu</h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">▲ ▼</td><td>Choose: RS232 Tester, USB Sender or Settings</td></tr>
+  <tr><td class="b">ENTER, RUN</td><td>Start the chosen one</td></tr>
+</table>
+</div></div>
+
+<h1>RS232 Tester <small>buttons</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>Press</th><th>In <code>RUN</code></th><th>Stopped: <code>HOLD</code> or <code>SNAP</code></th></tr>
+  <tr><td class="b">◄</td><td class="op">short</td><td colspan="2">Range down: R8 → R7 …</td></tr>
+  <tr><td class="b">►</td><td class="op">short</td><td colspan="2">Range up: R8 → R9</td></tr>
+  <tr><td class="b">▲</td><td class="op">short</td><td colspan="2">Sample rate up: 100 k → 250 k → 500 k → 1.25 M → 2 M S/s</td></tr>
+  <tr><td class="b">▼</td><td class="op">short</td><td colspan="2">Sample rate down</td></tr>
+  <tr><td class="b">AUTO</td><td class="op">short</td><td colspan="2">Speed: 9600 8N1 → 19200 8N1 → worked out from the line (<code>A</code> in the bar)</td></tr>
+  <tr><td class="b" rowspan="2">ENTER</td><td class="op">short</td><td colspan="2">Line type: <code>RS232</code> (rests negative) ↔ <code>TTL</code> (rests positive)</td></tr>
+  <tr><td class="op">held</td><td colspan="2" class="w">Back to the start menu; the buffer is kept</td></tr>
+  <tr><td class="b" rowspan="2">MODE</td><td class="op">short</td><td colspan="2">View: protocol → single character → bus health → large → hex → characters</td></tr>
+  <tr><td class="op">held</td><td>—</td><td class="w">Only in <code>WAIT</code>: a simulated message, “Apreciometru RS232” + CR LF</td></tr>
+  <tr><td class="b">RUN</td><td class="op">short</td><td>Freeze: <code>RUN</code> → <code>HOLD</code></td><td>From <code>HOLD</code>: arm a capture (<code>WAIT</code>). From <code>SNAP</code>: wait for the next capture.</td></tr>
+  <tr><td class="b">POWER</td><td class="op">short</td><td colspan="2">Learn the speed and the frame again</td></tr>
+</table>
+</div></div>
+<p class="note">Single character view: ▲ ▼ move the threshold by hand, AUTO held puts it back in the middle of the levels; in <code>HOLD</code> or on a capture ◄ ► step through the characters instead of the range. Bus health view: RUN starts the figures again.</p>
+
+<h1>Which rate for which speed</h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Speed</th><th>AUTO set to</th><th>▲ ▼ to</th><th>Speed</th><th>AUTO set to</th><th>▲ ▼ to</th></tr>
+  <tr><td class="b">9600</td><td>9600</td><td>(by itself) 100 kS/s</td><td class="b">57600</td><td><code>A</code></td><td>500 kS/s</td></tr>
+  <tr><td class="b">19200</td><td>19200</td><td>(by itself) 250 kS/s</td><td class="b">115200</td><td><code>A</code></td><td><b>1.25 MS/s</b></td></tr>
+  <tr><td class="b">38400</td><td><code>A</code></td><td>250 or 500 kS/s</td><td class="b">unknown</td><td><code>A</code></td><td>start at 250 kS/s</td></tr>
+</table>
+</div></div>
+<p class="note">At 2 MS/s the screen still shows the line, but the decoder no longer keeps up with it. In <code>A</code> the first dozen or so characters of a new signal can be lost while the frame is worked out; the red counters start from zero once it is.</p>
+
+<h1>USB Sender <small>the buffer to the PC</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">▲ ▼</td><td>What to send: everything (<code>ALL</code>) or a single block. The screen shows the CRC-32 of what will be sent.</td></tr>
+  <tr><td class="b">RUN</td><td>Send, in the format chosen in Settings; RUN again stops it. The PC must hold the port open (“USB open”).</td></tr>
+  <tr><td class="b">MODE</td><td>Back to the menu; ENTER held does the same</td></tr>
+</table>
+</div></div>
+
+<h1>Settings <small>kept until power-off</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">▲ ▼</td><td>Choose the row: Theme, Export, Block, Auto off, Buffer</td></tr>
+  <tr><td class="b">◄ ►</td><td>Theme: Default, Light, eInk, Night, Phosphor, Bluesky, Orange, Gold. Export: Raw, Hex dump. Block: all in one, 64, 256, 1024 bytes. Auto off: off, 10 min, 30 min. Values wrap around at the ends.</td></tr>
+  <tr><td class="b">AUTO</td><td>Held on the Buffer row: empties the buffer (“ERASED”)</td></tr>
+  <tr><td class="b">ENTER, RUN, MODE</td><td>Back to the menu</td></tr>
+</table>
+</div></div>
+<p class="note">Settings are not written to flash yet: every start is with Default, Hex dump, all in one and 10 min.</p>
+
+<h1>Capture <small>RS232 Tester, the RUN button step by step</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>The bar shows</th><th>What happens</th><th>RUN leads to</th></tr>
+  <tr><td class="b"><code>RUN</code></td><td>Reads and displays continuously</td><td><code>HOLD</code></td></tr>
+  <tr><td class="b"><code>HOLD</code></td><td>Screen frozen, no longer reading</td><td><code>WAIT</code></td></tr>
+  <tr><td class="b"><code>WAIT</code></td><td>Waits for the first start bit. MODE held: the simulated message, as if it had come down the line</td><td><code>RUN</code></td></tr>
+  <tr><td class="b"><code>SNAP</code></td><td>The first characters as a waveform with boxes; the whole message goes into the buffer and can be seen with MODE.</td><td><code>WAIT</code> (another capture)</td></tr>
+</table>
+</div></div>
+
+<h1>On screen <small>the top bar and the red counters</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Text</th><th>Means</th><th>Text</th><th>Means</th></tr>
+  <tr><td class="b"><code>R8 DC</code></td><td>Range 0…9 and coupling</td><td class="b"><code>F</code></td><td>Bad stop bit: wrong speed, frame or threshold</td></tr>
+  <tr><td class="b"><code>A 115200 8N1</code></td><td>Speed and frame; <code>A</code> = worked out from the line, <code>?</code> = not yet</td><td class="b"><code>P</code></td><td>Bad parity</td></tr>
+  <tr><td class="b"><code>1230 B</code></td><td>Characters received</td><td class="b"><code>O</code></td><td>A block of samples was lost</td></tr>
+  <tr><td class="b"><code>kS/s</code>, <code>spb</code></td><td>Sample rate; samples per bit</td><td class="b"><code>D</code></td><td>Character decoded but not shown in time</td></tr>
+</table>
+</div></div>
+
+<p class="note">Probe on ×1: tip on the line (TX or RX), ground clip on its signal ground. R8 (5 V a division) suits RS232; R5–R6 suit TTL. Zero comes from the unit's own FNIRSI calibration. On the PC: <code>python tools/usb_receive.py COMx</code>, then RUN in USB Sender; a hex dump is checked against its CRC-32 and saved as a .bin.</p>
+
+</main>
+</body>
+</html>
