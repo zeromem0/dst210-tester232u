@@ -1,5 +1,11 @@
 # RS232 tester for the FNIRSI DST-210
 
+I wrote an alternative firmware that turns the FNIRSI DST-210 into a pocket RS232/TTL serial
+tester: 4-in-1, next to its oscilloscope, multimeter and signal generator.
+
+> **Use at your own risk.** This is a hobby project, not affiliated with FNIRSI, and there is no
+> warranty of any kind.
+
 Read an RS232 or TTL serial line **directly through the oscilloscope input**, without a USART or a
 MAX3232. The tester displays the waveform, the characters aligned beneath the bits from which they
 were derived, and the data stream in both hex and ASCII. What was received can be taken to a PC
